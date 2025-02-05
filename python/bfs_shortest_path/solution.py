@@ -1,5 +1,4 @@
 from collections import deque
-from typing import List
 
 grid = [["S", 0, 1, 0, "E"], [0, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 0, 1]]
 
