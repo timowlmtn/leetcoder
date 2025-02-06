@@ -12,3 +12,8 @@ depth before going to the next level.
 - BFS on Owlmtn Web Pages
 
 - BFS shortest path
+
+## Depth-First Search
+
+The depth first search uses a recursive method to
+traverse nodes all depth.
