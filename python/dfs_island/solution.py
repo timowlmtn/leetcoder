@@ -9,13 +9,13 @@ def count_islands(grid):
         for direction in directions:
             d_row, d_col = row_idx + direction[0], col_idx + direction[1]
             # If we fall within the grid
-            if 0 <= d_row < rows and 0 <= d_col < cols and grid[d_row][d_col] == '1':
+            if 0 <= d_row < rows and 0 <= d_col < cols and grid[d_row][d_col] == "1":
                 in_an_island[(d_row, d_col)] = True
 
     for row in range(rows):
         for col in range(cols):
             # Check to see if we are on an island
-            if grid[row][col] == '1':
+            if grid[row][col] == "1":
                 island_count = island_count + 1
                 depth_search(row, col)
 
@@ -26,8 +26,9 @@ grid = [
     ["1", "1", "0", "0", "0"],
     ["1", "1", "0", "0", "0"],
     ["0", "0", "1", "0", "0"],
-    ["0", "0", "0", "1", "1"]
+    ["0", "0", "0", "1", "1"],
 ]
+
 
 def main():
     print(f"Path: {count_islands(grid)}")
