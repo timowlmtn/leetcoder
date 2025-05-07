@@ -1,0 +1,36 @@
+flowchart LR
+  subgraph Client Layer
+    A[Spreadsheet Plugin UI] -->|REST / WebSocket| B[API Gateway]
+  end
+
+  subgraph Edge and API
+    B --> C1[Auth Service]
+    B --> C2[Agent Orchestrator]
+    B --> C3[Data Ingestion]
+    B --> C4[Forecasting Service]
+    B --> C5[Notification Service]
+  end
+
+  subgraph Core Processing
+    C2 --> D1[Task Queue - SQS]
+    C3 --> D1
+    D1 --> D2[Worker Pool]
+    D2 --> D3[ML Model Server - MLflow]
+    D2 --> D4[Analytics Engine - Jupyter Notebook]
+  end
+
+  subgraph Data and Storage
+    C3 --> E1[Operational DB - Postgres]
+    D3 --> E2[Artifact Store - S3 ]
+    D4 --> E3[Data Warehouse - Snowflake]
+    C1 --> E1
+  end
+
+  subgraph Observability
+    all_services([All Services]) ---> F1[Logging - Cloudwatch]
+    all_services ---> F2[Metrics - Prometheus+Grafana]
+  end
+
+  subgraph Admin
+    G[Admin Portal] --> B
+  end
